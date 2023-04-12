@@ -1,0 +1,84 @@
+.objects {
+  padding-bottom: 15rem;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 18rem;
+    left: 0;
+    bottom: 0;
+    width: 50rem;
+    background-color: #494949;
+    border-top-right-radius: 17.8rem;
+    z-index: 0;
+  }
+
+  &__container {
+    position: relative;
+  }
+
+  .section__title {
+    position: absolute;
+    top: 0;
+    max-width: 50rem;
+    margin-bottom: 5rem;
+    z-index: 4;
+  }
+
+  &__inner {
+    margin-top: 11rem;
+    width: 100%;
+  }
+
+  &__slider {
+    position: relative;
+
+    .swiper-button-prev {
+      top: 75%;
+    }
+    .swiper-button-next {
+      top: 75%;
+      right: initial;
+      left: 20rem;
+    }
+  }
+
+  & .btn-accent {
+    position: absolute;
+    left: 4rem;
+    bottom: 5rem;
+  }
+
+  .object {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__title {
+      padding-top: 5rem;
+      max-width: 15ch;
+      overflow-wrap: anywhere;
+      font-weight: 500;
+      font-size: 3.6rem;
+      letter-spacing: 0.08em;
+      z-index: 3;
+    }
+
+    &__description {
+      position: absolute;
+      top: 14.5rem;
+      max-width: 36rem;
+      font-weight: 500;
+      font-size: 2.4rem;
+      letter-spacing: 0.08em;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    video {
+      border-radius: 2.9rem;
+      overflow: hidden;
+      z-index: 1;
+    }
+  }
+
+}

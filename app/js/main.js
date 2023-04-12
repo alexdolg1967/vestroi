@@ -82,8 +82,16 @@ const tabs = new graph_tabs__WEBPACK_IMPORTED_MODULE_3__["default"]("jobs");
 // Подключение свайпера
 
 swiper__WEBPACK_IMPORTED_MODULE_5__["default"].use([swiper__WEBPACK_IMPORTED_MODULE_5__.Navigation, swiper__WEBPACK_IMPORTED_MODULE_5__.Pagination]);
-const swiper = new swiper__WEBPACK_IMPORTED_MODULE_5__["default"]('.certificates__slider', {
+const certificateSlider = new swiper__WEBPACK_IMPORTED_MODULE_5__["default"]('.certificates__slider', {
   slidesPerView: 3,
+  spaceBetween: 130,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev"
+  }
+});
+const objectsSlider = new swiper__WEBPACK_IMPORTED_MODULE_5__["default"]('.objects__slider', {
+  slidesPerView: 1,
   spaceBetween: 130,
   navigation: {
     nextEl: ".swiper-button-next",

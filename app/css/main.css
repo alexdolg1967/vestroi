@@ -59,7 +59,7 @@
   color: var(--light-color);
   background-color: var(--bg-color);
   scroll-behavior: smooth;
-  scroll-padding-bottom: 8rem;
+  scroll-padding-bottom: 0;
 }
 
 .page__body {
@@ -1089,6 +1089,85 @@ button svg {
 }
 .certificates .swiper-button-next {
   right: 5rem;
+}
+
+.objects {
+  padding-bottom: 15rem;
+}
+.objects::after {
+  content: "";
+  position: absolute;
+  top: 18rem;
+  left: 0;
+  bottom: 0;
+  width: 50rem;
+  background-color: #494949;
+  border-top-right-radius: 17.8rem;
+  z-index: 0;
+}
+.objects__container {
+  position: relative;
+}
+.objects .section__title {
+  position: absolute;
+  top: 0;
+  max-width: 50rem;
+  margin-bottom: 5rem;
+  z-index: 4;
+}
+.objects__inner {
+  margin-top: 11rem;
+  width: 100%;
+}
+.objects__slider {
+  position: relative;
+}
+.objects__slider .swiper-button-prev {
+  top: 75%;
+}
+.objects__slider .swiper-button-next {
+  top: 75%;
+  right: initial;
+  left: 20rem;
+}
+.objects .btn-accent {
+  position: absolute;
+  left: 4rem;
+  bottom: 5rem;
+}
+.objects .object {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.objects .object__title {
+  padding-top: 5rem;
+  max-width: 15ch;
+  overflow-wrap: anywhere;
+  font-weight: 500;
+  font-size: 3.6rem;
+  letter-spacing: 0.08em;
+  z-index: 3;
+}
+.objects .object__description {
+  position: absolute;
+  top: 14.5rem;
+  max-width: 36rem;
+  font-weight: 500;
+  font-size: 2.4rem;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.7);
+}
+.objects .object video {
+  border-radius: 2.9rem;
+  overflow: hidden;
+  z-index: 1;
 }
 
 .contact {

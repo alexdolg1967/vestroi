@@ -54,8 +54,17 @@ getHeaderHeight();
 // Подключение свайпера
 import Swiper, { Navigation, Pagination } from 'swiper';
 Swiper.use([Navigation, Pagination]);
-const swiper = new Swiper('.certificates__slider', {
+const certificateSlider = new Swiper('.certificates__slider', {
   slidesPerView: 3,
+  spaceBetween: 130,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+});
+
+const objectsSlider = new Swiper('.objects__slider', {
+  slidesPerView: 1,
   spaceBetween: 130,
   navigation: {
     nextEl: ".swiper-button-next",
