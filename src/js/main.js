@@ -78,6 +78,16 @@ window.onload = function () {
 
   const headerObserver = new IntersectionObserver(callback);
   headerObserver.observe(headerElement);
+
+  ScrollReveal({
+    reset: true,
+    distance: '80px',
+    duration: 2000,
+    delay: 200
+  });
+
+  ScrollReveal().reveal('.hero__title', { origin: 'left' });
+  ScrollReveal().reveal('.hero__info', { origin: 'right', delay: 400 });
 };
 
 
