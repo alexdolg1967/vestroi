@@ -3,7 +3,7 @@
   "version": "2.2",
   "description": "Верстка для телеграм-канала Верстай за деньги",
   "main": "gulpfile.js",
-  "homepage": "",
+  "homepage": "https://alexdolg1967.github.io/vestroi/",
   "scripts": {
     "html": "node-w3c-validator -f lint -evH -i app/**/*.html",
     "dev": "gulp",

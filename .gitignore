@@ -1,5 +1,4 @@
 /node_modules
-/app
 /.vscode
 /src/scss/mixins
 /js/vendor
