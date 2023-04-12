@@ -1,0 +1,116 @@
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 78.2rem;
+  padding-top: var(--header-height);
+  padding-bottom: 10rem;
+  background-color: var(--bg-color);
+
+  @include for-extra {
+    min-height: 99.2rem;
+  }
+
+  &-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 6vw;
+
+    @include for-desktop {
+      flex-direction: row;
+      justify-content: space-between;
+      column-gap: 2vw;
+    }
+  }
+
+  &__title {
+    position: relative;
+    margin: 1vw auto 4vw 0;
+    max-width: 13ch;
+    display: flex;
+    font-weight: 400;
+    font-size: clamp(2.625rem, 3.525rem + 5.5vw, 12.25rem);
+    z-index: 3;
+
+    @include for-desktop {
+      margin: 3vw auto 4vw 0;
+      flex: 0 1 86rem;
+
+    }
+  }
+
+  &__content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    max-width: 110rem;
+    height: clamp(33rem, 32.7rem + 30.5vw, 91.5rem);
+    font-size: 0;
+    overflow: hidden;
+
+    @include for-desktop {
+      border-radius: 0px 0px 0px 3rem;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+      z-index: 1;
+    }
+
+    & img {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      object-fit: cover;
+      object-position: bottom center;
+      z-index: 0;
+    }
+
+  }
+
+  &__info {
+    margin-right: 2vw;
+    max-width: 53ch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1.5rem;
+    z-index: 2;
+
+    @include for-desktop {
+      margin-top: 4vw;
+      align-items: flex-start;
+
+    }
+
+    @include for-extra {
+      margin-right: 6vw;
+      max-width: 41.5rem;
+    }
+
+    & p {
+      text-align: center;
+      font-weight: 500;
+      font-size: 1.8rem;
+      letter-spacing: 0.08em;
+
+      @include for-small {
+        font-size: 2.4rem;
+      }
+
+      @include for-desktop {
+        text-align: left;
+      }
+    }
+  }
+
+  &-btn-accent {
+    color: var(--light-color);
+    background-color: var(--accent-color);
+  }
+}
+

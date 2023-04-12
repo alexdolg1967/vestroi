@@ -1,0 +1,14 @@
+.btn {
+  padding: 1.2rem 2rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  font-size: 1.6rem;
+  text-align: center;
+  letter-spacing: 0.08em;
+  color: var(--accent-color);
+  background-color: var(--light-color);
+  box-shadow: 0px 0px 10px var(--accent-color);
+  border-radius: 3rem;
+}

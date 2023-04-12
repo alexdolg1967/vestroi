@@ -1,0 +1,194 @@
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+*::selection {
+  background-color: var(--accent-color);
+  color: #fff;
+}
+
+.page {
+  height: 100%;
+  -webkit-text-size-adjust: 100%;
+  font-size: 62.5%; /* 10px */
+  color: var(--light-color);
+  background-color: var(--bg-color);
+  scroll-behavior: smooth;
+  scroll-padding-bottom: 8rem;
+}
+
+.page__body {
+  margin: 0;
+  padding: 0;
+  min-width: 32rem;
+  min-height: 100%;
+  font-family: var(--font-family, sans-serif);
+  font-size: 1.6rem;
+  line-height: 1.22;
+  text-rendering: optimizeSpeed;
+}
+
+.wrapper {
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  &._loaded {
+  }
+}
+
+.main {
+  height: 100%;
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+section {
+  position: relative;
+  padding-bottom: 6.2rem;
+  background-color: var(--bg-color);
+}
+section:not(:first-of-type)::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 6.2vw;
+  min-height: 4.5rem;
+  max-height: 12rem;
+  background-color: #C4C4C4;
+}
+
+.section__title {
+  font-weight: 500;
+  font-size: 2.4rem;
+  line-height: 1.22;
+}
+
+img,
+picture {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+.is-hidden {
+  display: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+.btn-reset {
+  border: none;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.list-reset {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.input-reset {
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  border-radius: 0;
+  background-color: #fff;
+
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    display: none;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  clip: rect(0 0 0 0);
+}
+
+._container {
+  margin: 0 auto;
+  padding: 0 8%;
+
+  @media (min-width: 567px) {
+    padding: 0 7.5%;
+  }
+  @media (min-width: 992px) {
+    padding: 0 6.1%;
+  }
+}
+
+.js-focus-visible :focus:not(.focus-visible) {
+  outline: none;
+}
+
+a,
+button {
+  display: inline-flex;
+  align-items: center;
+  transition: transform, color, background-color, border-color 0.3s ease-in-out;
+}
+a svg,
+button svg {
+  transition: transform, fill, stroke 0.3s ease-in-out;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.dis-scroll {
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  overscroll-behavior: none;
+}
+
+.page--ios .dis-scroll {
+  position: relative;
+}

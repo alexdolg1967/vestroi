@@ -1,0 +1,34 @@
+.link {
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.22;
+  letter-spacing: 0.08em;
+  color: #FFFFFF;
+
+  @include for-extra {
+    font-weight: 500;
+    font-size: 2rem;
+  }
+
+  &-tel::before {
+    content: '';
+    margin-right: 1rem;
+    width: 20px;
+    height: 20px;
+    background-image: url(../img/phone.svg);
+    background-position: left center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  &-mail::before {
+    content: '';
+    margin-right: 1rem;
+    width: 20px;
+    height: 20px;
+    background-image: url(../img/mail.svg);
+    background-position: left center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}

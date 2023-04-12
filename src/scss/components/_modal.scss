@@ -1,0 +1,15 @@
+.graph-modal {
+
+  &__container {
+    color: #ffffff;
+    background-color: #252424;
+  }
+
+  &__close {
+    width: 43px;
+    height: 43px;
+    background-image: url(../img/cross.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}

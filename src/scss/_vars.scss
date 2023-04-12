@@ -1,0 +1,15 @@
+// если вы хотите использовать sass-переменные - удалите root
+// colors
+:root {
+  // base
+  --font-family: "Oswald", sans-serif;
+
+  // colors
+  --bg-color: #252424;
+  --accent-color: #fdb505;
+  --light-color: #ffffff;
+}
+// $widthContent: 1686;
+// $offsetContainer: 15;
+// $maxWidthContainer: $widthContent + ($offsetContainer * 2);
+$gap: 16px;

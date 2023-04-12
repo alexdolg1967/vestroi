@@ -1,0 +1,27 @@
+<div class="graph-modal">
+  <div class="graph-modal__container" role="dialog" aria-modal="true" data-graph-target="consultation">
+    <button class="btn-reset graph-modal__close js-modal-close" aria-label="Закрыть модальное окно"></button>
+    <div class="graph-modal__content">
+      Получить консультацию
+      <form action="#" class="form" role="form">
+        <input type="hidden" name="theme" value="Обратный звонок">
+        <input type="hidden" name="admin_email[]" value="">
+        <input type="hidden" name="form_subject" value="Заявка с сайта">
+        <label class="form__label">
+          <input type="text" name="Имя" class="form__input" placeholder="Имя" data-validate-field="name">
+        </label>
+        <label class="form__label">
+          <input type="email" name="email" class="form__input input-mail" placeholder="E-mail" data-validate-field="email">
+        </label>
+        <button type="submit" class="btn-reset form__btn">Отправить</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="graph-modal__container" role="dialog" aria-modal="true" data-graph-target="calculator">
+    <button class="btn-reset graph-modal__close js-modal-close" aria-label="Закрыть модальное окно"></button>
+    <div class="graph-modal__content">
+      Калькулятор стоимости общеобменной вентиляции
+    </div>
+  </div>
+</div>

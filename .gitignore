@@ -1,0 +1,7 @@
+/node_modules
+/app
+/.vscode
+/src/scss/mixins
+/js/vendor
+package-lock.json
+gulpfile.js
