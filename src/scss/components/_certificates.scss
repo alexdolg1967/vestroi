@@ -1,0 +1,20 @@
+.certificates {
+  padding-bottom: 15rem;
+
+  .section__title {
+    margin-top: 9rem;
+    margin-bottom: 10rem;
+  }
+
+  &__inner {
+    position: relative;
+    padding-inline: 20rem;
+  }
+
+  .swiper-button-prev {
+    left: 5rem;
+  }
+  .swiper-button-next {
+    right: 5rem;
+  }
+}

@@ -1073,6 +1073,24 @@ button svg {
   column-gap: 6vw;
 }
 
+.certificates {
+  padding-bottom: 15rem;
+}
+.certificates .section__title {
+  margin-top: 9rem;
+  margin-bottom: 10rem;
+}
+.certificates__inner {
+  position: relative;
+  padding-inline: 20rem;
+}
+.certificates .swiper-button-prev {
+  left: 5rem;
+}
+.certificates .swiper-button-next {
+  right: 5rem;
+}
+
 .contact {
   padding-bottom: 0;
 }
