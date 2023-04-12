@@ -90,6 +90,8 @@ window.onload = function () {
   ScrollReveal().reveal('.hero__info', { origin: 'right', delay: 400 });
   ScrollReveal().reveal('.section__title', { origin: 'left', delay: 200 });
   ScrollReveal().reveal('.benefits__inner', { origin: 'right', delay: 400 });
+  ScrollReveal().reveal('.tabs__nav', { origin: 'left', delay: 400 });
+  ScrollReveal().reveal('.tabs__content', { origin: 'right', delay: 600 });
 };
 
 

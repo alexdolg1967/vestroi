@@ -1,9 +1,21 @@
 .jobs {
   padding-bottom: 9.5rem;
 
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 11rem;
+    right: 0;
+    height: 19rem;
+    background-color: var(--accent-color);
+    border-radius: 0 0 19rem 19rem;
+    z-index: -1;
+  }
+
   .section__title {
     margin-top: 9rem;
-    margin-bottom: 3.2rem;
+    margin-bottom: 4rem;
   }
 
   &__inner {
@@ -16,8 +28,9 @@
       &__nav {
         max-width: 44.5rem;
         flex-direction: column;
-        row-gap: 2.5rem;
+        justify-content: center;
         align-items: flex-start;
+        row-gap: 2.7rem;
 
         &-btn {
           position: relative;
@@ -55,6 +68,11 @@
         position: relative;
         width: 100%;
         height: 100%;
+        font-size: 0;
+        aspect-ratio: 16 / 9.5;
+        box-shadow: inset 0 0 2px var(--accent-color);
+        border-radius: 2.7rem;
+
 
         & picture {
           position: relative;

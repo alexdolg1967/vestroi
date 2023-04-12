@@ -1272,6 +1272,14 @@ window.onload = function () {
     origin: 'right',
     delay: 400
   });
+  ScrollReveal().reveal('.tabs__nav', {
+    origin: 'left',
+    delay: 400
+  });
+  ScrollReveal().reveal('.tabs__content', {
+    origin: 'right',
+    delay: 600
+  });
 };
 })();
 

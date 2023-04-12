@@ -69,6 +69,7 @@ section:not(:first-of-type)::before {
   font-size: clamp(2.4rem, 2.4rem + 2.5vw, 6.4rem);
   line-height: 1.22;
   text-transform: uppercase;
+  z-index: 1;
 
   & span {
     color: var(--accent-color);
