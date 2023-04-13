@@ -92,7 +92,7 @@ window.onload = function () {
   ScrollReveal().reveal('.benefits__inner', { origin: 'right', delay: 400 });
   ScrollReveal().reveal('.tabs__nav', { origin: 'left', delay: 400 });
   ScrollReveal().reveal('.tabs__content', { origin: 'right', delay: 600 });
-  ScrollReveal().reveal('.certificates__slider', { origin: 'bottom', delay: 400 });
+  ScrollReveal().reveal('.certificates__inner', { origin: 'bottom', delay: 400 });
 };
 
 

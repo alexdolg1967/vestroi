@@ -2,24 +2,43 @@
   padding-bottom: 5.2rem;
 
   .section__title {
+    max-width: 20ch;
     margin-top: 9rem;
   }
 
   &__inner {
     position: relative;
     display: grid;
-    grid-template-columns: repeat(3, minmax(250px, 380px));
-    grid-template-rows: repeat(2, minmax(125px, 300px));
+    grid-template-columns: minmax(220px, 380px);
+    grid-template-rows: repeat(6, minmax(125px, 200px));
     justify-content: center;
-    column-gap: 7rem;
-    row-gap: 4rem;
+    row-gap: 2rem;
     z-index: 2;
     counter-reset: benefit 0;
+
+    @include for-small {
+      grid-template-columns: repeat(2, minmax(220px, 380px));
+      grid-template-rows: repeat(3, minmax(125px, 200px));
+      justify-content: center;
+      column-gap: 4rem;
+      row-gap: 2rem;
+    }
+
+    @include for-tablet {
+      column-gap: 7rem;
+    }
+
+    @include for-desktop {
+      grid-template-columns: repeat(3, minmax(250px, 380px));
+      grid-template-rows: repeat(2, minmax(125px, 300px));
+      column-gap: 7rem;
+      row-gap: 4rem;
+    }
   }
 
   .benefit {
     position: relative;
-    padding: 12rem 5.5rem 4.5rem;
+    padding: 16vw 3vw 4vw;
     background: #FFFFFF;
     border-radius: 3rem;
     filter: drop-shadow(0px 0px 15px #C4C4C4);
@@ -27,9 +46,21 @@
 
     &__text {
       font-weight: 500;
-      font-size: 24px;
+      font-size: clamp(1.4rem, 1.1rem + 1.076vw, 2.4rem);
       letter-spacing: 0.08em;
+      overflow-wrap: anywhere;
       color: #252424;
+    }
+
+    @include for-small {
+      padding: 7.5vw 3vw 4vw;
+    }
+
+    @include for-desktop {
+      padding: 10rem 2.5rem 4rem;
+    }
+    @include for-extra {
+      padding: 12rem 5.5rem 4.5rem;
     }
 
     &::before,
@@ -40,14 +71,22 @@
       right: 2rem;
       font-weight: 500;
       font-size: 96px;
+      font-size: clamp(3.6rem, 2.4rem + 3.75vw, 9.6rem);
       color: var(--accent-color);
       z-index: 4;
     }
     &::after {
       content: "0";
-      right: 6.5rem;
+      right: 5rem;
       z-index: 3;
       color: #C4C4C4;
+
+      @include for-desktop {
+        right: 5.8rem;
+      }
+      @include for-big {
+        right: 6.3rem;
+      }
     }
   }
 
@@ -57,9 +96,18 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 46rem;
+    height: 70%;
     background-color: var(--accent-color);
     border-radius: 19rem 19rem 0 0;
     z-index: 0;
+
+    @include for-small {
+      height: 60%;
+    }
+
+    @include for-desktop {
+      height: 42%;
+    }
   }
+
 }

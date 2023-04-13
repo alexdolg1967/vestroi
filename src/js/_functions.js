@@ -6,7 +6,7 @@ import { mobileCheck } from "./functions/mobile-check";
 // console.log(mobileCheck());
 
 // Определение ширины экрана
-// import { isMobile, isTablet, isDesktop } from './functions/check-viewport';
+import { isMobile, isTablet, isDesktop } from './functions/check-viewport';
 // if (isDesktop()) {
 //   console.log('...')
 // }
@@ -51,17 +51,73 @@ getHeaderHeight();
 //   placement: 'right'
 // });
 
+
+
 // Подключение свайпера
 import Swiper, { Navigation, Pagination } from 'swiper';
 Swiper.use([Navigation, Pagination]);
-const certificateSlider = new Swiper('.certificates__slider', {
-  slidesPerView: 3,
-  spaceBetween: 130,
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-});
+
+
+let mql = window.matchMedia('(min-width: 1024px)');
+let certSlider = false;
+
+function certificateSliderInit() {
+  let certificateSlider = new Swiper('.certificates__slider', {
+    slidesPerView: 3,
+    spaceBetween: 130,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+      992: {
+        slidesPerView: 2,
+        spaceBetween: 90,
+      },
+      1200: {
+        slidesPerView: 3,
+        spaceBetween: 130,
+      }
+    },
+    init: true
+  });
+
+  certSlider = true;
+}
+
+if (isDesktop()) {
+  certificateSliderInit();
+}
+
+window.addEventListener('resize', () => {
+  if (mql.matches) {
+    let certificateSlider = new Swiper('.certificates__slider', {
+      slidesPerView: 3,
+      spaceBetween: 130,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints: {
+        992: {
+          slidesPerView: 2,
+          spaceBetween: 90,
+        },
+        1200: {
+          slidesPerView: 3,
+          spaceBetween: 130,
+        }
+      },
+      init: true
+    });
+
+    certSlider = true;
+  } else {
+    if (certSlider) {
+      certificateSlider.destroy();
+    }
+  }
+})
 
 const objectsSlider = new Swiper('.objects__slider', {
   slidesPerView: 1,

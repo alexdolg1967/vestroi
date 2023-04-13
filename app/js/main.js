@@ -20,13 +20,14 @@ console.log('components');
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _functions_mobile_check__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions/mobile-check */ "./src/js/functions/mobile-check.js");
-/* harmony import */ var _functions_burger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./functions/burger */ "./src/js/functions/burger.js");
-/* harmony import */ var graph_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! graph-modal */ "./node_modules/graph-modal/src/graph-modal.js");
-/* harmony import */ var graph_tabs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! graph-tabs */ "./node_modules/graph-tabs/src/graph-tabs.js");
-/* harmony import */ var _functions_header_height__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./functions/header-height */ "./src/js/functions/header-height.js");
-/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
-/* harmony import */ var smooth_scroll__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! smooth-scroll */ "./node_modules/smooth-scroll/dist/smooth-scroll.polyfills.min.js");
-/* harmony import */ var smooth_scroll__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(smooth_scroll__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _functions_check_viewport__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./functions/check-viewport */ "./src/js/functions/check-viewport.js");
+/* harmony import */ var _functions_burger__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./functions/burger */ "./src/js/functions/burger.js");
+/* harmony import */ var graph_modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! graph-modal */ "./node_modules/graph-modal/src/graph-modal.js");
+/* harmony import */ var graph_tabs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! graph-tabs */ "./node_modules/graph-tabs/src/graph-tabs.js");
+/* harmony import */ var _functions_header_height__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./functions/header-height */ "./src/js/functions/header-height.js");
+/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
+/* harmony import */ var smooth_scroll__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! smooth-scroll */ "./node_modules/smooth-scroll/dist/smooth-scroll.polyfills.min.js");
+/* harmony import */ var smooth_scroll__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(smooth_scroll__WEBPACK_IMPORTED_MODULE_7__);
 // Данный файл - лишь собрание подключений готовых компонентов.
 // Рекомендуется создавать отдельный файл в папке components и подключать все там
 
@@ -35,7 +36,7 @@ __webpack_require__.r(__webpack_exports__);
 // console.log(mobileCheck());
 
 // Определение ширины экрана
-// import { isMobile, isTablet, isDesktop } from './functions/check-viewport';
+
 // if (isDesktop()) {
 //   console.log('...')
 // }
@@ -60,15 +61,15 @@ __webpack_require__.r(__webpack_exports__);
 
 // Реализация модального окна
 
-const modal = new graph_modal__WEBPACK_IMPORTED_MODULE_2__["default"]();
+const modal = new graph_modal__WEBPACK_IMPORTED_MODULE_3__["default"]();
 
 // Реализация табов
 
-const tabs = new graph_tabs__WEBPACK_IMPORTED_MODULE_3__["default"]("jobs");
+const tabs = new graph_tabs__WEBPACK_IMPORTED_MODULE_4__["default"]("jobs");
 
 // Получение высоты шапки сайта (не забудьте вызвать функцию)
 
-(0,_functions_header_height__WEBPACK_IMPORTED_MODULE_4__.getHeaderHeight)();
+(0,_functions_header_height__WEBPACK_IMPORTED_MODULE_5__.getHeaderHeight)();
 
 // Подключение плагина кастом-скролла
 // import 'simplebar';
@@ -81,16 +82,63 @@ const tabs = new graph_tabs__WEBPACK_IMPORTED_MODULE_3__["default"]("jobs");
 
 // Подключение свайпера
 
-swiper__WEBPACK_IMPORTED_MODULE_5__["default"].use([swiper__WEBPACK_IMPORTED_MODULE_5__.Navigation, swiper__WEBPACK_IMPORTED_MODULE_5__.Pagination]);
-const certificateSlider = new swiper__WEBPACK_IMPORTED_MODULE_5__["default"]('.certificates__slider', {
-  slidesPerView: 3,
-  spaceBetween: 130,
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev"
+swiper__WEBPACK_IMPORTED_MODULE_6__["default"].use([swiper__WEBPACK_IMPORTED_MODULE_6__.Navigation, swiper__WEBPACK_IMPORTED_MODULE_6__.Pagination]);
+let mql = window.matchMedia('(min-width: 1024px)');
+let certSlider = false;
+function certificateSliderInit() {
+  let certificateSlider = new swiper__WEBPACK_IMPORTED_MODULE_6__["default"]('.certificates__slider', {
+    slidesPerView: 3,
+    spaceBetween: 130,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev"
+    },
+    breakpoints: {
+      992: {
+        slidesPerView: 2,
+        spaceBetween: 90
+      },
+      1200: {
+        slidesPerView: 3,
+        spaceBetween: 130
+      }
+    },
+    init: true
+  });
+  certSlider = true;
+}
+if ((0,_functions_check_viewport__WEBPACK_IMPORTED_MODULE_1__.isDesktop)()) {
+  certificateSliderInit();
+}
+window.addEventListener('resize', () => {
+  if (mql.matches) {
+    let certificateSlider = new swiper__WEBPACK_IMPORTED_MODULE_6__["default"]('.certificates__slider', {
+      slidesPerView: 3,
+      spaceBetween: 130,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev"
+      },
+      breakpoints: {
+        992: {
+          slidesPerView: 2,
+          spaceBetween: 90
+        },
+        1200: {
+          slidesPerView: 3,
+          spaceBetween: 130
+        }
+      },
+      init: true
+    });
+    certSlider = true;
+  } else {
+    if (certSlider) {
+      certificateSlider.destroy();
+    }
   }
 });
-const objectsSlider = new swiper__WEBPACK_IMPORTED_MODULE_5__["default"]('.objects__slider', {
+const objectsSlider = new swiper__WEBPACK_IMPORTED_MODULE_6__["default"]('.objects__slider', {
   slidesPerView: 1,
   spaceBetween: 130,
   navigation: {
@@ -109,7 +157,7 @@ const objectsSlider = new swiper__WEBPACK_IMPORTED_MODULE_5__["default"]('.objec
 
 // Подключение плавной прокрутки к якорям
 
-const scroll = new (smooth_scroll__WEBPACK_IMPORTED_MODULE_6___default())('a[href*="#"]');
+const scroll = new (smooth_scroll__WEBPACK_IMPORTED_MODULE_7___default())('a[href*="#"]');
 
 // Подключение событий свайпа на мобильных
 // import 'swiped-events';
@@ -214,6 +262,40 @@ __webpack_require__.r(__webpack_exports__);
     });
   });
 })();
+
+/***/ }),
+
+/***/ "./src/js/functions/check-viewport.js":
+/*!********************************************!*\
+  !*** ./src/js/functions/check-viewport.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "isDesktop": () => (/* binding */ isDesktop),
+/* harmony export */   "isMobile": () => (/* binding */ isMobile),
+/* harmony export */   "isTablet": () => (/* binding */ isTablet)
+/* harmony export */ });
+const isMobile = () => {
+  if (window.innerWidth < 768) {
+    return true;
+  }
+  return false;
+};
+const isTablet = () => {
+  if (window.innerWidth >= 769 && window.innerWidth <= 1024) {
+    return true;
+  }
+  return false;
+};
+const isDesktop = () => {
+  if (window.innerWidth > 1025) {
+    return true;
+  }
+  return false;
+};
 
 /***/ }),
 
@@ -13886,7 +13968,7 @@ window.onload = function () {
     origin: 'right',
     delay: 600
   });
-  ScrollReveal().reveal('.certificates__slider', {
+  ScrollReveal().reveal('.certificates__inner', {
     origin: 'bottom',
     delay: 400
   });

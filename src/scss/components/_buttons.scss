@@ -1,12 +1,12 @@
 .btn {
   position: relative;
-  min-width: 14.5rem;
+  min-width: 11.5rem;
   padding: 1.2rem 2rem;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   font-weight: 500;
-  font-size: 1.6rem;
+  font-size: clamp(1.2rem, 0.8rem + 0.25vw, 1.6rem);
   text-align: center;
   letter-spacing: 0.08em;
   color: var(--accent-color);
@@ -15,6 +15,10 @@
   border-radius: 3rem;
   overflow: hidden;
   z-index: 1;
+
+  @include for-desktop {
+    min-width: 14.5rem;
+  }
 
   &::before {
     content: '';
