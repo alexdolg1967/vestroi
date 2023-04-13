@@ -1,16 +1,44 @@
 .objects {
-  padding-bottom: 15rem;
+    padding-bottom: 9rem;
+
+    @include for-small {
+      padding-bottom: 12rem;
+    }
+
+    @include for-desktop {
+      padding-bottom: 15rem;
+    }
 
   &::after {
     content: '';
     position: absolute;
-    top: 18rem;
+    top: 7ch;
     left: 0;
     bottom: 0;
-    width: 50rem;
+    width: 50%;
+    max-width: 50rem;
     background-color: #494949;
-    border-top-right-radius: 17.8rem;
+    border-top-right-radius: 6rem;
     z-index: 0;
+
+    @include for-small {
+      top: 10vw;
+      width: 48%;
+    }
+
+    @include for-tablet {
+      top: 10vw;
+      border-top-right-radius: 12rem;
+    }
+
+    @include for-desktop {
+      top: 10vw;
+      border-top-right-radius: 17rem;
+    }
+
+    @include for-extra {
+      width: 50rem;
+    }
   }
 
   &__container {
@@ -20,64 +48,153 @@
   .section__title {
     position: absolute;
     top: 0;
-    max-width: 50rem;
+    max-width: 11ch;
     margin-bottom: 5rem;
+    font-size: clamp(2.4rem, 2.4rem + 3.5vw, 6.4rem);
     z-index: 4;
   }
 
   &__inner {
-    margin-top: 11rem;
+    margin-top: 8vw;
     width: 100%;
+
+    @include for-desktop {
+      margin-top: 11rem;
+    }
   }
 
   &__slider {
     position: relative;
 
-    .swiper-button-prev {
-      top: 75%;
+  }
+  & .swiper {
+    padding-bottom: 33vw;
+    border-radius: 2.9rem;
+    overflow: visible;
+
+    @include for-small {
+      padding-bottom: 17.4rem;
     }
-    .swiper-button-next {
-      top: 75%;
-      right: initial;
+
+    @include for-tablet {
+      overflow: hidden;
+    }
+
+    @include for-desktop {
+      padding-bottom: 0;
+    }
+  }
+  & .swiper-button-prev {
+    left: 0;
+    top: 83%;
+
+    @include for-small {
+      top: 88%;
+    }
+
+    @include for-desktop {
+      top: 78%;
+    }
+  }
+  & .swiper-button-next {
+    top: 83%;
+    right: initial;
+    left: 9.5rem;
+
+    @include for-small {
       left: 20rem;
+      top: 88%;
+    }
+
+    @include for-desktop {
+      top: 78%;
     }
   }
 
   & .btn-accent {
     position: absolute;
-    left: 4rem;
-    bottom: 5rem;
+    left: 0;
+    bottom: 2rem;
+
+    @include for-small {
+      left: 6rem;
+      bottom: 2rem;
+    }
+
+    @include for-desktop {
+      left: 4rem;
+      bottom: 4rem;
+    }
   }
 
   .object {
+    padding-top: 13vw;
+    width: 100%;
+    aspect-ratio: 16 / 9;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    row-gap: 3vw;
+
+    @include for-desktop {
+      padding-top: 0;
+      aspect-ratio: 16 / 9;
+      flex-direction: row;
+      align-items: center;
+      column-gap: 11vw;
+    }
 
     &__title {
-      padding-top: 5rem;
-      max-width: 15ch;
+      padding-top: 8rem;
+      flex: 0 0 21ch;
+      width: 21ch;
       overflow-wrap: anywhere;
       font-weight: 500;
-      font-size: 3.6rem;
+      font-size: clamp(1.8rem, 1.3rem + 1.5vw, 3.6rem);
       letter-spacing: 0.08em;
       z-index: 3;
+
+      @include for-desktop {
+        flex: 0 0 15ch;
+        width: 15ch;
+      }
     }
 
     &__description {
       position: absolute;
-      top: 14.5rem;
-      max-width: 36rem;
+      top: 17ch;
+      max-width: 23ch;
       font-weight: 500;
-      font-size: 2.4rem;
+      font-size: clamp(1rem, 0.7rem + 0.875vw, 2.4rem);
       letter-spacing: 0.08em;
       color: rgba(255, 255, 255, 0.7);
+      z-index: 4;
+
+      @include for-tablet {
+        top: 17ch;
+      }
+
+      @include for-desktop {
+        top: 13vw;
+      }
     }
 
     video {
-      border-radius: 2.9rem;
+      margin-left: -9%;
+      margin-right: -9%;
+      width: calc(100% + 18%);
+      flex: 1 1 auto;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
       overflow: hidden;
       z-index: 1;
+
+      @include for-tablet {
+        border-radius: 2.9rem;
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+      }
     }
   }
 
