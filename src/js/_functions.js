@@ -128,6 +128,25 @@ const objectsSlider = new Swiper('.objects__slider', {
   },
 });
 
+const aboutSlider = new Swiper('.about__slider', {
+  slidesPerView: 2,
+  spaceBetween: 25,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  breakpoints: {
+    768: {
+      slidesPerView: 2,
+      spaceBetween: 90,
+    },
+    1200: {
+      slidesPerView: 3,
+      spaceBetween: 130,
+    }
+  },
+});
+
 // Подключение анимаций по скроллу
 // import AOS from 'aos';
 // AOS.init();

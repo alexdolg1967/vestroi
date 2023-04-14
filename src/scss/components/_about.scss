@@ -1,0 +1,92 @@
+.about {
+  padding-bottom: 10vw;
+
+  .section__title {
+    margin-top: 10rem;
+    margin-bottom: 2vw;
+
+  }
+
+  .section__subtitle {
+    max-width: 63rem;
+    margin-bottom: 6vw;
+    font-size: clamp(1.4rem, 1rem + 1.5vw, 3.6rem);
+    letter-spacing: 0.08em;
+
+    & span {
+      color: var(--accent-color);
+    }
+  }
+
+  &__inner {
+    position: relative;
+    padding-inline: 0;
+
+    @include for-tablet {
+      padding-inline: 2vw;
+    }
+
+    @include for-desktop {
+      padding-inline: 9vw;
+    }
+  }
+
+  & .swiper-button-prev {
+    display: none;
+
+    @include for-desktop {
+      display: block;
+      left: 5rem;
+    }
+  }
+  & .swiper-button-next {
+    display: none;
+
+    @include for-desktop {
+      display: block;
+      right: 5rem;
+    }
+  }
+
+  &-item {
+    position: relative;
+
+    & picture {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    & img {
+      object-fit: cover;
+      border-radius: 3rem;
+      overflow: hidden;
+    }
+
+    &__content {
+      padding: .8rem 1rem 1rem;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: var(--accent-color);
+      background: rgba(73, 73, 73, 0.7);
+      border-radius: 0px 0px 3rem 3rem;
+    }
+
+    &__title {
+      margin: 0;
+      font-weight: 500;
+      font-size: clamp(1.2rem, 0.8rem + 1.4vw, 2.2rem);
+    }
+    &__descr {
+      margin: 0;
+      font-size: clamp(1rem, 0.8rem + 1.2vw, 1.6rem);
+    }
+  }
+}

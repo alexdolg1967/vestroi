@@ -146,6 +146,24 @@ const objectsSlider = new swiper__WEBPACK_IMPORTED_MODULE_6__["default"]('.objec
     prevEl: ".swiper-button-prev"
   }
 });
+const aboutSlider = new swiper__WEBPACK_IMPORTED_MODULE_6__["default"]('.about__slider', {
+  slidesPerView: 2,
+  spaceBetween: 25,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev"
+  },
+  breakpoints: {
+    768: {
+      slidesPerView: 2,
+      spaceBetween: 90
+    },
+    1200: {
+      slidesPerView: 3,
+      spaceBetween: 130
+    }
+  }
+});
 
 // Подключение анимаций по скроллу
 // import AOS from 'aos';
@@ -13971,6 +13989,14 @@ window.onload = function () {
   ScrollReveal().reveal('.certificates__inner', {
     origin: 'bottom',
     delay: 400
+  });
+  ScrollReveal().reveal('.object__title', {
+    origin: 'left',
+    delay: 400
+  });
+  ScrollReveal().reveal('.object__media', {
+    origin: 'right',
+    delay: 600
   });
 };
 })();
