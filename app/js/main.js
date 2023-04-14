@@ -13957,6 +13957,8 @@ window.onload = function () {
   };
   const headerObserver = new IntersectionObserver(callback);
   headerObserver.observe(headerElement);
+
+  // active link menu scroll
   const sections = document.querySelectorAll("section[id]");
   function scrollActive() {
     const scrollY = window.pageYOffset;
@@ -13974,8 +13976,10 @@ window.onload = function () {
     });
   }
   window.addEventListener("scroll", scrollActive);
+
+  // animation scroll
   ScrollReveal({
-    reset: true,
+    reset: false,
     distance: "80px",
     duration: 2000,
     delay: 200
@@ -13983,7 +13987,7 @@ window.onload = function () {
   ScrollReveal().reveal(".hero__title", {
     origin: "left"
   });
-  ScrollReveal().reveal(".hero__info", {
+  ScrollReveal().reveal(".hero__info, .benefits__inner, .section__subtitle", {
     origin: "right",
     delay: 400
   });
@@ -13991,41 +13995,21 @@ window.onload = function () {
     origin: "left",
     delay: 200
   });
-  ScrollReveal().reveal(".benefits__inner", {
-    origin: "right",
-    delay: 400
-  });
-  ScrollReveal().reveal(".tabs__nav", {
+  ScrollReveal().reveal(".tabs__nav, .object__title", {
     origin: "left",
     delay: 400
   });
-  ScrollReveal().reveal(".tabs__content", {
+  ScrollReveal().reveal(".tabs__content, .object__media", {
     origin: "right",
     delay: 600
   });
-  ScrollReveal().reveal(".certificates__inner", {
+  ScrollReveal().reveal(".certificates__inner, .contact-inner__container", {
     origin: "bottom",
-    delay: 400
-  });
-  ScrollReveal().reveal(".object__title", {
-    origin: "left",
-    delay: 400
-  });
-  ScrollReveal().reveal(".object__media", {
-    origin: "right",
-    delay: 600
-  });
-  ScrollReveal().reveal(".section__subtitle", {
-    origin: "right",
     delay: 400
   });
   ScrollReveal().reveal(".about__inner", {
     origin: "bottom",
     delay: 600
-  });
-  ScrollReveal().reveal('.contact-inner__container', {
-    origin: "bottom",
-    delay: 400
   });
 };
 })();

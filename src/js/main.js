@@ -79,6 +79,7 @@ window.onload = function () {
   const headerObserver = new IntersectionObserver(callback);
   headerObserver.observe(headerElement);
 
+  // active link menu scroll
   const sections = document.querySelectorAll("section[id]");
 
   function scrollActive() {
@@ -96,44 +97,30 @@ window.onload = function () {
               .querySelector(".nav__item a[href*=" + sectionId + "]")
               .classList.add("active");
           } else {
-
               document
                 .querySelector(".nav__item a[href*=" + sectionId + "]")
                 .classList.remove("active");
             }
         }
 
-
     });
   }
   window.addEventListener("scroll", scrollActive);
 
+  // animation scroll
   ScrollReveal({
-    reset: true,
+    reset: false,
     distance: "80px",
     duration: 2000,
     delay: 200,
   });
 
   ScrollReveal().reveal(".hero__title", { origin: "left" });
-  ScrollReveal().reveal(".hero__info", { origin: "right", delay: 400 });
+  ScrollReveal().reveal(".hero__info, .benefits__inner, .section__subtitle", { origin: "right", delay: 400 });
   ScrollReveal().reveal(".section__title", { origin: "left", delay: 200 });
-  ScrollReveal().reveal(".benefits__inner", { origin: "right", delay: 400 });
-  ScrollReveal().reveal(".tabs__nav", { origin: "left", delay: 400 });
-  ScrollReveal().reveal(".tabs__content", { origin: "right", delay: 600 });
-  ScrollReveal().reveal(".certificates__inner", {
-    origin: "bottom",
-    delay: 400,
-  });
-  ScrollReveal().reveal(".object__title", { origin: "left", delay: 400 });
-  ScrollReveal().reveal(".object__media", { origin: "right", delay: 600 });
-  ScrollReveal().reveal(".section__subtitle", { origin: "right", delay: 400 });
-  ScrollReveal().reveal(".about__inner", {
-    origin: "bottom",
-    delay: 600,
-  });
-  ScrollReveal().reveal('.contact-inner__container', {
-    origin: "bottom",
-    delay: 400,
-  });
+  ScrollReveal().reveal(".tabs__nav, .object__title", { origin: "left", delay: 400 });
+  ScrollReveal().reveal(".tabs__content, .object__media", { origin: "right", delay: 600 });
+  ScrollReveal().reveal(".certificates__inner, .contact-inner__container", { origin: "bottom",  delay: 400, });
+  ScrollReveal().reveal(".about__inner", {origin: "bottom", delay: 600, });
+
 };
