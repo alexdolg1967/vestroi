@@ -54,10 +54,12 @@
       }
     }
 
-    &__label {
+    & .input-box {
       width: 100%;
+      position: relative;
     }
-    &__input {
+
+    & .form__input {
       width: 100%;
       padding: 1.5vw 3.5vw;
       font-weight: 500;
@@ -72,6 +74,10 @@
         font-size: clamp(1.2rem, 0.8rem + 1.2vw, 2.4rem);
         color: rgba(37, 36, 36, 0.7);
       }
+    }
+
+    & .just-validate-error-label {
+      margin-left: 2vw;
     }
     &__btn {
       max-width: 180px;

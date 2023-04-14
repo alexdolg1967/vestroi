@@ -16,10 +16,11 @@
   <link rel="stylesheet" href="css/main.css">
   <meta name="keywords" lang="ru" content="слова, слова">
   <meta name="description" lang="ru" content="Описание">
-  <script src="js/main.js" defer></script>
+
 </head>
 
 <body class="page__body">
+  <!--[if lt IE 11]><p   class="browsehappy container">К сожалению, вы используете устаревший браузер. Пожалуйста, <a href="http://browsehappy.com/" target="_blank">обновите ваш браузер</a>, чтобы улучшить производительность, качество отображаемого материала и повысить безопасность.</p><![endif]-->
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
   <symbol id="icon--search" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -70,11 +71,21 @@
         </a>
         <nav class="nav" aria-label="Верхнее меню" role="navigation" data-menu>
           <ul class="nav__list list-reset">
-            <li class="nav__item" data-menu-item><a href="#jobs" class="nav__link active">Виды работ</a></li>
-            <li class="nav__item" data-menu-item><a href="#certificates" class="nav__link">Сертификаты</a></li>
-            <li class="nav__item" data-menu-item><a href="#objects" class="nav__link">Выполненные объекты</a></li>
-            <li class="nav__item" data-menu-item><a href="#about" class="nav__link">О компании</a></li>
-            <li class="nav__item" data-menu-item><a href="#contact" class="nav__link">Контакты</a></li>
+            <li class="nav__item" data-menu-item>
+              <a href="#jobs" class="nav__link active">Виды работ</a>
+            </li>
+            <li class="nav__item" data-menu-item>
+              <a href="#certificates" class="nav__link">Сертификаты</a>
+            </li>
+            <li class="nav__item" data-menu-item>
+              <a href="#objects" class="nav__link">Выполненные объекты</a>
+            </li>
+            <li class="nav__item" data-menu-item>
+              <a href="#about" class="nav__link">О компании</a>
+            </li>
+            <li class="nav__item" data-menu-item>
+              <a href="#contact" class="nav__link">Контакты</a>
+            </li>
           </ul>
         </nav>
 
@@ -490,14 +501,26 @@
           <input type="hidden" name="theme" value="Обратный звонок">
           <input type="hidden" name="admin_email[]" value="">
           <input type="hidden" name="form_subject" value="Заявка с сайта">
-          <label class="contact-form__label">
-            <input type="text" name="Имя" class="contact-form__input" placeholder="Имя" data-validate-field="name">
-          </label>
-          <label class="contact-form__label">
-            <input type="phone" name="Телефон" class="contact-form__input input-phone" placeholder="Телефон" data-validate-field="phone">
-          </label>
+          <div class="input-box">
+            <input
+              type="text"
+              name="Имя клиента"
+              class="form__input input-name"
+              placeholder="Имя"
+              autocomplete="off"
+            />
+          </div>
+          <div class="input-box">
+            <input
+              type="tel"
+              name="Телефон клиента"
+              class="form__input input-tel"
+              placeholder="+7 (___) ___-__-__"
+            />
+          </div>
           <button type="submit" class="btn btn-reset contact-form__btn">Отравить заявку</button>
         </form>
+        <a href="index.ntml" id="succ_reg" class="success-message"></a>
       </div>
 
       <div class="contact__content">
@@ -532,40 +555,81 @@
 </footer>
 
     <div class="graph-modal">
-  <div class="graph-modal__container modal-consultation" role="dialog" aria-modal="true" data-graph-target="consultation">
-    <button class="btn-reset graph-modal__close js-modal-close" aria-label="Закрыть модальное окно"></button>
+  <div
+    class="graph-modal__container modal-consultation"
+    role="dialog"
+    aria-modal="true"
+    data-graph-target="consultation"
+  >
+    <button
+      class="btn-reset graph-modal__close js-modal-close"
+      aria-label="Закрыть модальное окно"
+    ></button>
     <div class="graph-modal__content">
       <div class="modal__title">Получить консультацию</div>
-      <p class="modal__subtitle">Оставьте заявку, чтобы наш инженер мог с Вами связаться</p>
-      <form action="#" class="form" role="form">
-        <input type="hidden" name="theme" value="Обратный звонок">
-        <input type="hidden" name="admin_email[]" value="">
-        <input type="hidden" name="form_subject" value="Заявка с сайта">
+      <p class="modal__subtitle">
+        Оставьте заявку, чтобы наш инженер мог с Вами связаться
+      </p>
+      <form action="#" class="form" role="form" id="form-consultation">
+        <input type="hidden" name="theme" value="Обратный звонок" />
+        <input type="hidden" name="admin_email[]" value="" />
+        <input
+          type="hidden"
+          name="form_subject"
+          value="Заявка на консультацию"
+        />
         <div class="input-box">
-          <input type="text" name="Имя" class="form__input" data-validate-field="name">
-          <label class="form__label">Имя</label>
+          <input
+            type="text"
+            name="Имя клиента"
+            class="form__input input-name"
+            data-validate-field="name"
+            placeholder="Имя"
+            autocomplete="off"
+          />
         </div>
         <div class="input-box">
-          <input type="phone" name="phone" class="form__input input-mail" data-validate-field="phone">
-          <label class="form__label">Телефон</label>
+          <input
+            type="tel"
+            name="Телефон клиента"
+            class="form__input input-tel"
+            data-validate-field="phone"
+            placeholder="+7 (___) ___-__-__"
+          />
         </div>
-        <button type="submit" class="btn btn-reset btn-accent">Отправить</button>
+        <button type="submit" class="btn btn-reset btn-accent">
+          Отправить
+        </button>
       </form>
-      <p class="modal__descr">Нажимая на кнопку, Вы даете согласие на обработку персональных данных</p>
+      <p class="modal__descr">
+        Нажимая на кнопку, Вы даете согласие на обработку персональных данных
+      </p>
     </div>
   </div>
 
-  <div class="graph-modal__container modal-calculator" role="dialog" aria-modal="true" data-graph-target="calculator">
-    <button class="btn-reset graph-modal__close js-modal-close" aria-label="Закрыть модальное окно"></button>
+  <div
+    class="graph-modal__container modal-calculator"
+    role="dialog"
+    aria-modal="true"
+    data-graph-target="calculator"
+  >
+    <button
+      class="btn-reset graph-modal__close js-modal-close"
+      aria-label="Закрыть модальное окно"
+    ></button>
     <div class="graph-modal__content">
-      <div class="modal__title">Калькулятор стоимости общеобменной вентиляции</div>
+      <div class="modal__title">
+        Калькулятор стоимости общеобменной вентиляции
+      </div>
     </div>
   </div>
+
 </div>
 
   </div>
 
   <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="js/main.js"></script>
 </body>
 
 </html>

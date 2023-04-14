@@ -1,4 +1,7 @@
 .graph-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &__container {
     width: 100%;
@@ -10,15 +13,16 @@
   &__close {
     top: 3vw;
     right: 4vw;
-    width: 43px;
-    height: 43px;
+    width: clamp(1rem, 0.8rem + 1.7vw, 4.3rem);
+    height: clamp(1rem, 0.8rem + 1.7vw, 4.3rem);
     background-image: url(../img/cross.svg);
     background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
   }
 
   .modal-consultation {
-    margin: 0;
+    margin: 0 1.5rem;
     padding: 5vw;
     max-width: 82.3rem;
 
@@ -33,7 +37,7 @@
       margin-bottom: 2.5vw;
       max-width: 15ch;
       font-weight: 500;
-      font-size: 6.4rem;
+      font-size: clamp(3.6rem, 2.9rem + 2.8vw, 6.4rem);
       text-align: center;
     }
 
@@ -41,13 +45,14 @@
       margin: 0;
       margin-bottom: 2.5vw;
       font-weight: 400;
-      font-size: 36px;
+      font-size: clamp(1.6rem, 1.2rem + 1.25vw, 3.6rem);
       text-align: center;
     }
 
     & .modal__descr {
       font-weight: 500;
       font-size: 2.4rem;
+      font-size: clamp(1.2rem, 0.6rem + 0.8vw, 2.4rem);
       text-align: center;
       letter-spacing: 0.08em;
       color: #494949;
@@ -66,30 +71,23 @@
         &:last-of-type {
           margin-bottom: 1.5vw;
         }
-      }
 
+      }
 
       & .form__input {
         width: 100%;
         padding: 1.4vw 3.5vw 1.6vw;
         font-weight: 500;
-        font-size: clamp(1.2rem, 0.8rem + 1.2vw, 2.4rem);
+        font-size: clamp(1.4rem, 1rem + 1.2vw, 2.4rem);
         color: var(--light-color);
         background-color: transparent;
         border: 1.5px solid #FFFFFF;
         border-radius: 3rem;
       }
-
-
-      & .form__label {
-        position: absolute;
-        top: 50%;
-        left: 3vw;
-        transform: translateY(-50%);
-        font-weight: 500;
-        font-size: 2.4rem;
-        color: #494949;
+      & .just-validate-error-label {
+        margin-left: 2vw;
       }
+
     }
   }
 }
