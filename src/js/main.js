@@ -127,4 +127,13 @@ window.onload = function () {
   });
   ScrollReveal().reveal(".object__title", { origin: "left", delay: 400 });
   ScrollReveal().reveal(".object__media", { origin: "right", delay: 600 });
+  ScrollReveal().reveal(".section__subtitle", { origin: "right", delay: 400 });
+  ScrollReveal().reveal(".about__inner", {
+    origin: "bottom",
+    delay: 600,
+  });
+  ScrollReveal().reveal('.contact-inner__container', {
+    origin: "bottom",
+    delay: 400,
+  });
 };

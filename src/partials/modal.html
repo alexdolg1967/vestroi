@@ -1,27 +1,31 @@
 <div class="graph-modal">
-  <div class="graph-modal__container" role="dialog" aria-modal="true" data-graph-target="consultation">
+  <div class="graph-modal__container modal-consultation" role="dialog" aria-modal="true" data-graph-target="consultation">
     <button class="btn-reset graph-modal__close js-modal-close" aria-label="Закрыть модальное окно"></button>
     <div class="graph-modal__content">
-      Получить консультацию
+      <div class="modal__title">Получить консультацию</div>
+      <p class="modal__subtitle">Оставьте заявку, чтобы наш инженер мог с Вами связаться</p>
       <form action="#" class="form" role="form">
         <input type="hidden" name="theme" value="Обратный звонок">
         <input type="hidden" name="admin_email[]" value="">
         <input type="hidden" name="form_subject" value="Заявка с сайта">
-        <label class="form__label">
-          <input type="text" name="Имя" class="form__input" placeholder="Имя" data-validate-field="name">
-        </label>
-        <label class="form__label">
-          <input type="email" name="email" class="form__input input-mail" placeholder="E-mail" data-validate-field="email">
-        </label>
-        <button type="submit" class="btn-reset form__btn">Отправить</button>
+        <div class="input-box">
+          <input type="text" name="Имя" class="form__input" data-validate-field="name">
+          <label class="form__label">Имя</label>
+        </div>
+        <div class="input-box">
+          <input type="phone" name="phone" class="form__input input-mail" data-validate-field="phone">
+          <label class="form__label">Телефон</label>
+        </div>
+        <button type="submit" class="btn btn-reset btn-accent">Отправить</button>
       </form>
+      <p class="modal__descr">Нажимая на кнопку, Вы даете согласие на обработку персональных данных</p>
     </div>
   </div>
 
-  <div class="graph-modal__container" role="dialog" aria-modal="true" data-graph-target="calculator">
+  <div class="graph-modal__container modal-calculator" role="dialog" aria-modal="true" data-graph-target="calculator">
     <button class="btn-reset graph-modal__close js-modal-close" aria-label="Закрыть модальное окно"></button>
     <div class="graph-modal__content">
-      Калькулятор стоимости общеобменной вентиляции
+      <div class="modal__title">Калькулятор стоимости общеобменной вентиляции</div>
     </div>
   </div>
 </div>

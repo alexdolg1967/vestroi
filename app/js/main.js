@@ -14015,6 +14015,18 @@ window.onload = function () {
     origin: "right",
     delay: 600
   });
+  ScrollReveal().reveal(".section__subtitle", {
+    origin: "right",
+    delay: 400
+  });
+  ScrollReveal().reveal(".about__inner", {
+    origin: "bottom",
+    delay: 600
+  });
+  ScrollReveal().reveal('.contact-inner__container', {
+    origin: "bottom",
+    delay: 400
+  });
 };
 })();
 

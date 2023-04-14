@@ -5,28 +5,41 @@
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    row-gap: 2vw;
+
+    @include for-small {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
   }
   // .footer__logo
   &__logo {
     display: flex;
     align-items: center;
     column-gap: 5px;
-    font-weight: 500;
-    font-size: 1.6rem;
-    line-height: 1.22;
-    letter-spacing: 0.08em;
     color: #FFFFFF;
 
     & p {
       margin: 0;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      font-size: clamp(1.2rem, 0.8rem + 1vw, 1.6rem);
     }
 
     & img {
       width: 15px;
       height: 13px;
     }
+  }
+
+  &-link {
+    font-weight: 500;
+      letter-spacing: 0.08em;
+      font-size: clamp(1.2rem, 0.8rem + 1vw, 1.6rem);
   }
 
 }
