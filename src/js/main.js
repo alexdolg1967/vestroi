@@ -137,23 +137,74 @@ window.onload = function () {
   ScrollReveal().reveal(".about__inner", { origin: "bottom", delay: 600 });
 };
 
-
 document.addEventListener("DOMContentLoaded", () => {
+  // калькулятор
+
+  const calculatorForm = document.querySelector('.calculator');
+
+  if (calculatorForm) {
+
+    const limit = 2.3;
+
+    const countCalc = calculatorForm.querySelector('#count');
+    let counter = calculatorForm.querySelector('#counter');
+    let errFloor = calculatorForm.querySelector('#err-floor');
+    let errSquare = calculatorForm.querySelector('#err-square');
+    let errType = calculatorForm.querySelector('#err-type');
+    let errHeight = calculatorForm.querySelector('#err-height');
+
+    countCalc.addEventListener('click', (e) => {
+      e.preventDefault();
+      counter.innerHTML ='';
+      errType.innerHTML = '';
+      errFloor.innerHTML = '';
+      errSquare.innerHTML = '';
+      errHeight.innerHTML = '';
+      let type = calculatorForm.querySelector('#type').value;
+      if (type == 0) {
+        errType.innerHTML = 'Выберите тип вентиляции'
+      } else {type = +type}
+      console.log('type ' + type);
+      let floor = calculatorForm.querySelector('#floor').value;
+      if (floor == 0) {
+        errFloor.innerHTML = 'Выберите этаж помещения'
+      } else { floor = +floor}
+      console.log('floor ' + floor);
+      let square = calculatorForm.querySelector('#square').value;
+      if (square == 0) {
+        errSquare.innerHTML = 'Введите площадь'
+      } else {
+        square = +square;
+      }
+      console.log('square ' + square);
+      let height = calculatorForm.querySelector('#height').value;
+      if (height == 0) {
+        errHeight.innerHTML = 'Введите высоту'
+      } else { height = +height}
+      console.log('height ' + height);
+
+      if ((type != 0) && (floor != 0) && square && height) {
+        counter.innerHTML = Math.ceil(( height * limit) + type + floor + (square * 300));
+      }
+
+
+    })
+  }
+
 
   // валидация форм и отправка почты
 
-  const formConsultation = document.querySelector("#form-consultation");
+  const contactForm = document.querySelector("#contact-form");
 
-  if (formConsultation) {
-    const succForm = document.getElementById("succ_reg");
+  if (contactForm) {
+    const succContactForm = document.getElementById("succ-contact");
 
-    if (Cookies.get("succForm") == "Yes") {
-      succForm.classList.add("message--show");
-      succForm.innerHTML = "Ваше сообщение успешно отправлено";
+    if (Cookies.get("succContactForm") == "Yes") {
+      succContactForm.classList.add("message--show");
+      succContactForm.innerHTML = "Ваши контакты успешно отправлены";
       contactForm.classList.add("is-hidden");
     } else {
-
-      const rulesCons = [
+      const rulesContact = [
         {
           ruleSelector: ".input-name",
           rules: [
@@ -202,117 +253,72 @@ document.addEventListener("DOMContentLoaded", () => {
         },
       ];
 
-      const afterFormCons = () => {
-        succForm.classList.add("message--show");
-        succForm.innerHTML =
-          "Ваше сообщение успешно отправлено! Мы свяжемся с Вами в ближайшее время.";
-        formConsultation.classList.add("is-hidden");
-        // Cookies.set("succForm", "Yes", { expires: 30 });
+      const afterFormContact = () => {
+        succContactForm.classList.add("message--show");
+        succContactForm.innerHTML =
+          "Ваши контакты успешно отправлены! Мы свяжемся с Вами в ближайшее время.";
+        contactForm.classList.add("is-hidden");
+        // Cookies.set("succContactForm", "Yes", { expires: 30 });
       };
 
-      validateForms('#form-consultation', rulesCons, afterFormCons);
-
-
+      validateForms("#contact-form", rulesContact, afterFormContact);
     }
+  }
 
-    // const validConsultation = new JustValidate(formConsultation);
+  const formConsultation = document.querySelector("#form-consultation");
 
-    // validConsultation
-    //   .addField(".input-name", [
-    //     {
-    //       rule: "minLength",
-    //       value: 3,
-    //       errorMessage: "Имя должно содержать не менее 3 символов",
-    //     },
-    //     {
-    //       rule: "maxLength",
-    //       value: 20,
-    //       errorMessage: "Имя должно содержать не более 20 символов",
-    //     },
-    //     {
-    //       rule: "customRegexp",
-    //       value: /^[a-zA-Zа-яА-ЯёЁ]+$/,
-    //       errorMessage: "Имя должно состоять только из букв",
-    //     },
-    //     {
-    //       rule: "required",
-    //       value: true,
-    //       errorMessage: "Введите имя!",
-    //     },
-    //   ])
-    //   .addField(".input-tel", [
-    //     {
-    //       rule: "required",
-    //       tel:true,
-    //       value: true,
-    //       errorMessage: "Телефон обязателен",
-    //     },
-    //     {
-    //       rule: "minLength",
-    //       value: 11,
-    //       errorMessage: "Телефон должен содержать не менее 11 символов",
-    //     },
-    //     {
-    //       rule: "maxLength",
-    //       value: 11,
-    //       errorMessage: "Имя должно содержать не более 11 символов",
-    //     },
-    //   ])
-    //   .onSuccess((event) => {
-    //     console.log("Валидация формы успешно прошла", event);
+  if (formConsultation) {
+    const succConsForm = document.getElementById("succ-cons");
 
-    //     let formData = new FormData(event.target);
+    if (Cookies.get("succConsForm") == "Yes") {
+      succConsForm.classList.add("message--show");
+      succConsForm.innerHTML = "Ваша заявка на консультацию успешно отправлена";
+      contactForm.classList.add("is-hidden");
+    } else {
+      const rulesCons = [
+        {
+          ruleSelector: ".input-name",
+          rules: [
+            {
+              rule: "minLength",
+              value: 6,
+              errorMessage: "Имя должно содержать не менее 6 символов!",
+            },
+            {
+              rule: "maxLength",
+              value: 20,
+              errorMessage: "Имя должно содержать не более 20 символов!",
+            },
+            {
+              rule: "required",
+              value: true,
+              errorMessage: "Введите свое имя!",
+            },
+          ],
+        },
+        {
+          ruleSelector: ".input-tel",
+          tel: true,
+          telError: "Введите корректный телефон",
+          rules: [
+            {
+              rule: "required",
+              value: true,
+              errorMessage: "Заполните телефон!",
+            },
+          ],
+        },
+      ];
 
-    //     console.log(...formData);
+      const afterFormCons = () => {
+        succConsForm.classList.add("message--show");
+        succConsForm.innerHTML =
+          "Ваша заявка на консультацию успешно отправлена! Мы свяжемся с Вами в ближайшее время.";
+        formConsultation.classList.add("is-hidden");
+        // Cookies.set("succConsForm", "Yes", { expires: 30 });
+      };
 
-    //     let xhr = new XMLHttpRequest();
-
-    //     xhr.onreadystatechange = function () {
-    //       if (xhr.readyState === 4) {
-    //         //  успешная отправка
-    //         if (xhr.status === 200) {
-    //           console.log("Отправлено");
-    //           formConsultation.classList.add("is-hidden");
-    //           succReg.classList.add("message--show");
-    //           succReg.innerHTML = `<span>Ваша заяка успешно отправлена!</span>`;
-    //           setTimeout(function () {
-    //             window.location.href = "index.html";
-    //           }, 3 * 1000);
-    //         }
-
-    //         // Email sending failed: Bad Request
-    //         if (xhr.status != 200) {
-    //           console.log("ошибка");
-    //           formConsultation.classList.add("is-hidden");
-    //           succReg.classList.add("message--show");
-    //           succReg.innerHTML = `<span>Заявку отправить не удалось. Попробуйте пожалуйста позже...</span>`;
-    //           setTimeout(function () {
-    //             window.location.href = "index.html";
-    //           }, 4 * 1000);
-    //         }
-    //         // Email sending failed: Bad Request
-    //         if (xhr.status != 400) {
-    //         }
-    //         // Email sending failed: Unauthorized
-    //         if (xhr.status != 401) {
-    //         }
-    //         // Email sending failed: Forbidden
-    //         if (xhr.status === 402) {
-    //         }
-    //         // Email sending failed: Internal Server Error - ошибка сервера
-    //         if (xhr.status === 403) {
-    //         }
-    //         // Email sending failed: An unknown error occurred
-    //         if (xhr.status === 500) {
-    //         }
-    //       }
-    //     };
-
-    //     xhr.open("POST", "mail.php", true);
-    //     xhr.send(formData);
-
-    //     event.target.reset();
-    //   });
-
+      validateForms("#form-consultation", rulesCons, afterFormCons);
+    }
   }
 });

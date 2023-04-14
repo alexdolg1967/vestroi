@@ -37,7 +37,7 @@
       margin-bottom: 2.5vw;
       max-width: 15ch;
       font-weight: 500;
-      font-size: clamp(3.6rem, 2.9rem + 2.8vw, 6.4rem);
+      font-size: clamp(3rem, 2.7rem + 2.8vw, 6.4rem);
       text-align: center;
     }
 
@@ -51,8 +51,7 @@
 
     & .modal__descr {
       font-weight: 500;
-      font-size: 2.4rem;
-      font-size: clamp(1.2rem, 0.6rem + 0.8vw, 2.4rem);
+      font-size: clamp(1.2rem, 0.6rem + 1.6vw, 2.4rem);
       text-align: center;
       letter-spacing: 0.08em;
       color: #494949;
@@ -89,5 +88,90 @@
       }
 
     }
+  }
+
+  .modal-calculator {
+    margin: 0 1.5rem;
+    padding: 5vw;
+    max-width: 162.3rem;
+
+    & .graph-modal__content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    & .modal__title {
+      margin: 0;
+      margin-bottom: 2.5vw;
+      font-weight: 500;
+      font-size: clamp(2.4rem, 1.7rem + 2.2vw, 6.4rem);
+      text-align: center;
+    }
+
+    & .calculator {
+      width: 100%;
+      max-width: 123rem;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(13.2rem, 48.3rem));
+      column-gap: 8vw;
+      row-gap: 3vw;
+
+      & .input-box {
+        display: flex;
+        flex-direction: column;
+        row-gap: 1.5vw;
+      }
+
+      & .form__label,
+      & .counter {
+        font-weight: 500;
+        font-size: clamp(1.2rem, 0.6rem + 2vw, 4.8rem);
+      }
+
+      & .counter span {
+        color: var(--accent-color);
+      }
+
+      & .form__input {
+        width: 100%;
+        padding: 1.4vw 3.5vw 1.8vw 2vw;
+        font-weight: 500;
+        font-size: clamp(1.4rem, 1rem + 1.2vw, 2.4rem);
+        color: var(--light-color);
+        background-color: transparent;
+        border: 1.5px solid #FFFFFF;
+        border-radius: 3rem;
+
+        &::placeholder {
+          font-weight: 500;
+          font-size: clamp(1rem, 0.7rem + 1.2vw, 2.4rem);
+          color: #494949;
+        }
+      }
+
+      & .buttons-box {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        row-gap: 1.5vw;
+
+        & .btn {
+          min-width: 19ch;
+        }
+      }
+
+      & .err-message {
+        margin-top: -1vw;
+        margin-left: 2vw;
+        color: red;
+      }
+    }
+
+    &__descr {
+      margin: 0;
+      font-size: clamp(1.2rem, 0.8rem + 1.2vw, 2.4rem);
+    }
+
   }
 }

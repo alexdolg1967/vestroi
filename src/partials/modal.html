@@ -15,7 +15,7 @@
         Оставьте заявку, чтобы наш инженер мог с Вами связаться
       </p>
       <form action="#" class="form" role="form" id="form-consultation">
-        <input type="hidden" name="theme" value="Обратный звонок" />
+        <input type="hidden" name="theme" value="Получить консультацию" />
         <input type="hidden" name="admin_email[]" value="" />
         <input
           type="hidden"
@@ -45,6 +45,7 @@
           Отправить
         </button>
       </form>
+      <div id="succ_conc" class="success-message"></div>
       <p class="modal__descr">
         Нажимая на кнопку, Вы даете согласие на обработку персональных данных
       </p>
@@ -64,6 +65,48 @@
     <div class="graph-modal__content">
       <div class="modal__title">
         Калькулятор стоимости общеобменной вентиляции
+      </div>
+      <div class="calculator">
+        <div class="input-box">
+          <label class="form__label">Тип вентиляции</label>
+          <select name="form[]" class="catalog-header__select" id="type">
+            <option value="0" selected="selected" hidden>Выберите тип</option>
+            <option value="1000">Вытяжная</option>
+            <option value="2000">Приточная без подогрева</option>
+            <option value="3000">Приточно-вытяжная с подогревом</option>
+            <option value="4000">Приточно-вытяжная с рекуперацией</option>
+           </select>
+           <div id="err-type" class="err-message"></div>
+        </div>
+        <div class="input-box">
+          <label class="form__label">Этаж помещения</label>
+          <select name="form[]" class="catalog-header__select" id="floor">
+            <option value="0" selected="selected" hidden>Выберите этаж</option>
+            <option value="1">Цокольный</option>
+            <option value="230">1</option>
+            <option value="350">2</option>
+            <option value="470">3</option>
+            <option value="520">4</option>
+            <option value="650">4 и выше</option>
+           </select>
+           <div id="err-floor" class="err-message"></div>
+        </div>
+        <div class="input-box">
+          <label class="form__label">Площадь помещения, м2 </label>
+          <input type="number" name="Площадь" class="form__input" placeholder="Укажите площадь от 10 до 1000 м2" min="10" max="1000" id="square">
+          <div id="err-square" class="err-message"></div>
+        </div>
+        <div class="input-box">
+          <label class="form__label">Высота помещения, м</label>
+          <input type="number" name="Высота" class="form__input input-mail" placeholder="Укажите высоту от 2 до 4 м" min="2" max="4" id="height">
+          <div id="err-height" class="err-message"></div>
+        </div>
+        <div class="buttons-box">
+          <button class="btn btn-reset btn-accent" id="count">Посчитать</button>
+          <button class="btn btn-reset hero-btn" data-graph-path="consultation">Консультация</button>
+        </div>
+        <div class="counter">Итоговая стоимость: <span id="counter">0</span></div>
+        <p class="modal-calculator__descr">*Если площадь помещения и высота больше, обратитесь за индивидуальной консультацией к специалисту</p>
       </div>
     </div>
   </div>
