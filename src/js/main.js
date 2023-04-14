@@ -79,23 +79,52 @@ window.onload = function () {
   const headerObserver = new IntersectionObserver(callback);
   headerObserver.observe(headerElement);
 
+  const sections = document.querySelectorAll("section[id]");
+
+  function scrollActive() {
+    const scrollY = window.pageYOffset;
+
+    sections.forEach((current) => {
+      const sectionHeight = current.offsetHeight,
+        sectionTop = current.offsetTop - 58,
+        sectionId = current.getAttribute("id");
+
+        if (document.querySelector(".nav__item a[href*=" + sectionId + "]")) {
+
+          if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            document
+              .querySelector(".nav__item a[href*=" + sectionId + "]")
+              .classList.add("active");
+          } else {
+
+              document
+                .querySelector(".nav__item a[href*=" + sectionId + "]")
+                .classList.remove("active");
+            }
+        }
+
+
+    });
+  }
+  window.addEventListener("scroll", scrollActive);
+
   ScrollReveal({
     reset: true,
-    distance: '80px',
+    distance: "80px",
     duration: 2000,
-    delay: 200
+    delay: 200,
   });
 
-  ScrollReveal().reveal('.hero__title', { origin: 'left' });
-  ScrollReveal().reveal('.hero__info', { origin: 'right', delay: 400 });
-  ScrollReveal().reveal('.section__title', { origin: 'left', delay: 200 });
-  ScrollReveal().reveal('.benefits__inner', { origin: 'right', delay: 400 });
-  ScrollReveal().reveal('.tabs__nav', { origin: 'left', delay: 400 });
-  ScrollReveal().reveal('.tabs__content', { origin: 'right', delay: 600 });
-  ScrollReveal().reveal('.certificates__inner', { origin: 'bottom', delay: 400 });
-  ScrollReveal().reveal('.object__title', { origin: 'left', delay: 400 });
-  ScrollReveal().reveal('.object__media', { origin: 'right', delay: 600 });
+  ScrollReveal().reveal(".hero__title", { origin: "left" });
+  ScrollReveal().reveal(".hero__info", { origin: "right", delay: 400 });
+  ScrollReveal().reveal(".section__title", { origin: "left", delay: 200 });
+  ScrollReveal().reveal(".benefits__inner", { origin: "right", delay: 400 });
+  ScrollReveal().reveal(".tabs__nav", { origin: "left", delay: 400 });
+  ScrollReveal().reveal(".tabs__content", { origin: "right", delay: 600 });
+  ScrollReveal().reveal(".certificates__inner", {
+    origin: "bottom",
+    delay: 400,
+  });
+  ScrollReveal().reveal(".object__title", { origin: "left", delay: 400 });
+  ScrollReveal().reveal(".object__media", { origin: "right", delay: 600 });
 };
-
-
-
