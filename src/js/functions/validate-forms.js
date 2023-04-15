@@ -1,7 +1,7 @@
 import JustValidate from 'just-validate';
 import Inputmask from "inputmask";
 
-export const validateForms = (selector, rules, afterSend) => {
+export const validateForms = (selector, rules, afterSend, error) => {
   const form = document.querySelector(selector);
   const telSelector = form.querySelector('input[type="tel"]');
 
@@ -52,6 +52,12 @@ export const validateForms = (selector, rules, afterSend) => {
             afterSend();
           }
           console.log('Отправлено');
+        }
+        if (xhr.status != 200) {
+          if (error) {
+            error();
+          }
+          console.log('Не Отправлено');
         }
       }
     }

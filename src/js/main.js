@@ -3,6 +3,10 @@ import vars from "./_vars";
 import "./_functions";
 // import "./_components";
 
+let inputs = document.querySelectorAll('input[type="tel"]');
+let im = new Inputmask('+7 (999) 999-99-99');
+im.mask(inputs);
+
 import { validateForms } from "./functions/validate-forms";
 import Cookies from "./vendor/js.cookie.min.js";
 
@@ -111,13 +115,14 @@ window.onload = function () {
   // animation scroll
   ScrollReveal({
     reset: false,
-    distance: "80px",
+    distance: "180px",
     duration: 2000,
     delay: 200,
   });
 
   ScrollReveal().reveal(".hero__title", { origin: "left" });
-  ScrollReveal().reveal(".hero__info, .benefits__inner, .section__subtitle", {
+  ScrollReveal().reveal(".benefit, swiper-slide", { interval: 100 });
+  ScrollReveal().reveal(".hero__info, .section__subtitle", {
     origin: "right",
     delay: 400,
   });
@@ -130,7 +135,7 @@ window.onload = function () {
     origin: "right",
     delay: 600,
   });
-  ScrollReveal().reveal(".certificates__inner, .contact-inner__container", {
+  ScrollReveal().reveal(".certificates__inner, contact-inner", {
     origin: "bottom",
     delay: 400,
   });
@@ -187,83 +192,129 @@ document.addEventListener("DOMContentLoaded", () => {
         counter.innerHTML = Math.ceil(( height * limit) + type + floor + (square * 300));
       }
 
-
     })
   }
 
 
   // валидация форм и отправка почты
 
-  const contactForm = document.querySelector("#contact-form");
+  const contactForm = document.getElementById('contact-form');
+  const contactMessage = document.getElementById('succ_contact');
 
-  if (contactForm) {
-    const succContactForm = document.getElementById("succ-contact");
+  const sendEmail = (e) => {
+    e.preventDefault();
 
-    if (Cookies.get("succContactForm") == "Yes") {
-      succContactForm.classList.add("message--show");
-      succContactForm.innerHTML = "Ваши контакты успешно отправлены";
-      contactForm.classList.add("is-hidden");
-    } else {
-      const rulesContact = [
-        {
-          ruleSelector: ".input-name",
-          rules: [
-            {
-              rule: "minLength",
-              value: 6,
-              errorMessage: "Имя должно содержать не менее 6 символов!",
-            },
-            {
-              rule: "maxLength",
-              value: 20,
-              errorMessage: "Имя должно содержать не более 20 символов!",
-            },
-            {
-              rule: "required",
-              value: true,
-              errorMessage: "Введите свое имя!",
-            },
-          ],
-        },
-        // {
-        //   ruleSelector: ".input-email",
-        //   rules: [
-        //     {
-        //       rule: "minLength",
-        //       value: 6,
-        //     },
-        //     {
-        //       rule: "required",
-        //       value: true,
-        //       errorMessage: "Заполните email!",
-        //     },
-        //   ],
-        // },
-        {
-          ruleSelector: ".input-tel",
-          tel: true,
-          telError: "Введите корректный телефон",
-          rules: [
-            {
-              rule: "required",
-              value: true,
-              errorMessage: "Заполните телефон!",
-            },
-          ],
-        },
-      ];
+    // serviceID - templateID - #form - publicKey
+    emailjs.sendForm('service_b1u8c5', 'template_6l3g1xb', '#contact-form', 'TiK4dr258s35EzLDJ')
+      .then(() => {
+        // Show sent message
+        contactMessage.textContent = 'Ваши контакты успешно отправлены! 🎆'
 
-      const afterFormContact = () => {
-        succContactForm.classList.add("message--show");
-        succContactForm.innerHTML =
-          "Ваши контакты успешно отправлены! Мы свяжемся с Вами в ближайшее время.";
-        contactForm.classList.add("is-hidden");
-        // Cookies.set("succContactForm", "Yes", { expires: 30 });
-      };
+        // Remove message after five seconds
+        setTimeout(() => {
+          contactMessage.textContent = ''
+        }, 5000)
 
-      validateForms("#contact-form", rulesContact, afterFormContact);
-    }
+        // Clear input fields
+        contactForm.reset();
+
+      }, () => {
+        // Shoe error message
+        contactMessage.classList.add('error-message')
+        contactMessage.textContent = 'К сожалению в данный момент отправка невозможна! 🦀'
+
+        // Remove message after five seconds
+        setTimeout(() => {
+          contactMessage.classList.remove('error-message')
+          contactMessage.textContent = ''
+
+          // Clear input fields
+          contactForm.reset();
+        }, 5000)
+      })
   }
+
+  contactForm.addEventListener('submit', sendEmail)
+
+
+  // const contactForm = document.querySelector("#contact-form");
+
+  // if (contactForm) {
+  //   const succContactForm = contactForm.getElementById("succ_contact");
+
+  //   if (Cookies.get("succContactForm") == "Yes") {
+  //     succContactForm.classList.add("message--show");
+  //     succContactForm.innerHTML = "Ваши контакты успешно отправлены";
+  //     contactForm.classList.add("is-hidden");
+  //   } else {
+  //     const rulesContact = [
+  //       {
+  //         ruleSelector: ".input-name",
+  //         rules: [
+  //           {
+  //             rule: "minLength",
+  //             value: 6,
+  //             errorMessage: "Имя должно содержать не менее 6 символов!",
+  //           },
+  //           {
+  //             rule: "maxLength",
+  //             value: 20,
+  //             errorMessage: "Имя должно содержать не более 20 символов!",
+  //           },
+  //           {
+  //             rule: "required",
+  //             value: true,
+  //             errorMessage: "Введите свое имя!",
+  //           },
+  //         ],
+  //       },
+  //       // {
+  //       //   ruleSelector: ".input-email",
+  //       //   rules: [
+  //       //     {
+  //       //       rule: "minLength",
+  //       //       value: 6,
+  //       //     },
+  //       //     {
+  //       //       rule: "required",
+  //       //       value: true,
+  //       //       errorMessage: "Заполните email!",
+  //       //     },
+  //       //   ],
+  //       // },
+  //       {
+  //         ruleSelector: ".input-tel",
+  //         tel: true,
+  //         telError: "Введите корректный телефон",
+  //         rules: [
+  //           {
+  //             rule: "required",
+  //             value: true,
+  //             errorMessage: "Заполните телефон!",
+  //           },
+  //         ],
+  //       },
+  //     ];
+
+  //     const afterFormContact = () => {
+  //       succContactForm.classList.add("message--show");
+  //       succContactForm.innerHTML =
+  //         "Ваши контакты успешно отправлены! Мы свяжемся с Вами в ближайшее время.";
+  //       contactForm.classList.add("is-hidden");
+  //       Cookies.set("succContactForm", "Yes", { expires: 1 });
+  //     };
+
+  //     const errorFormContact = () => {
+  //       succContactForm.classList.add("message--show");
+  //       succContactForm.classList.add('error-message');
+  //       succContactForm.innerHTML =
+  //         "К сожалению в данный момент отправка невозможна!";
+  //         contactForm.classList.add("is-hidden");
+  //     }
+
+  //     validateForms("#contact-form", rulesContact, afterFormContact, errorFormContact);
+  //   }
+  // }
 
   const formConsultation = document.querySelector("#form-consultation");
 
@@ -315,10 +366,18 @@ document.addEventListener("DOMContentLoaded", () => {
         succConsForm.innerHTML =
           "Ваша заявка на консультацию успешно отправлена! Мы свяжемся с Вами в ближайшее время.";
         formConsultation.classList.add("is-hidden");
-        // Cookies.set("succConsForm", "Yes", { expires: 30 });
+        Cookies.set("succConsForm", "Yes", { expires: 1 });
       };
 
-      validateForms("#form-consultation", rulesCons, afterFormCons);
+      const error = () => {
+        succConsForm.classList.add("message--show");
+        succConsForm.classList.add('error-message');
+        succConsForm.innerHTML =
+          "К сожалению в данный момент отправка невозможна!";
+        formConsultation.classList.add("is-hidden");
+      }
+
+      validateForms("#form-consultation", rulesCons, afterFormCons, error);
     }
   }
 });
