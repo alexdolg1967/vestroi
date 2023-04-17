@@ -84,6 +84,9 @@
         border-radius: 3rem;
       }
       & .just-validate-error-label {
+        position: absolute;
+        bottom: -1.8vw;
+        left: 0;
         margin-left: 2vw;
       }
 
@@ -118,6 +121,7 @@
       row-gap: 3vw;
 
       & .input-box {
+        position: relative;
         display: flex;
         flex-direction: column;
         row-gap: 1.5vw;
@@ -150,6 +154,85 @@
         }
       }
 
+      & .choices {
+        z-index: 2;
+
+        &.is-focused.is-open .choices__inner {
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+      }
+
+      & .choices__inner {
+        width: 100%;
+        padding: 1.4vw 3.5vw 1.8vw 2vw;
+        font-weight: 500;
+        font-size: clamp(1.4rem, 1rem + 1.2vw, 2.4rem);
+        color: var(--light-color);
+        background-color: transparent;
+        border: 1.5px solid #FFFFFF;
+        border-radius: 3rem;
+        transition: 0.1s;
+      }
+
+      & .choices__list--dropdown {
+        background: #FFFFFF;
+        border-radius: 0px 0px 30px 30px;
+      }
+
+      & .choices__list--dropdown .choices__item {
+        font-weight: 400;
+        font-size: clamp(1.4rem, 1rem + 1.2vw, 2.4rem);
+        letter-spacing: 0.08em;
+        color: #252424;
+        padding: .5rem 1.5rem;
+        transition: 0.3s;
+
+        @include for-desktop {
+          padding: 1.5rem 3.5rem;
+        }
+
+        &:hover {
+          background-color: var(--accent-color);
+        }
+        &.is-selected {
+          color: var(--accent-color);
+
+          &:hover {
+            color: #252424;
+          }
+        }
+      }
+      & .choices[data-type*=select-one]:after {
+        content: '';
+        margin-top: -7.5px;
+        margin-right: 1.5vw;
+        width: 10px;
+        height: 6px;
+        background-image: url('../img/arr-down.svg');
+        background-position: center;
+        background-size: cover;
+        border: none;
+        border-color: transparent;
+        transition: transform 0.3s ease-in-out;
+
+        @include for-desktop {
+          margin-right: 3vw;
+          width: 20px;
+          height: 12px;
+        }
+      }
+
+      & .choices[data-type*=select-one].is-open:after {
+        transform: rotate(-180deg);
+      }
+
+      & .choices__list--dropdown .choices__item--selectable:after {
+        content: '';
+          display: none;
+      }
+
+
       & .buttons-box {
         display: flex;
         flex-direction: column;
@@ -162,7 +245,9 @@
       }
 
       & .err-message {
-        margin-top: -1vw;
+        position: absolute;
+        bottom: -1.8vw;
+        left: 0;
         margin-left: 2vw;
         color: red;
       }

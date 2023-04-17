@@ -494,6 +494,9 @@ button svg {
   border-radius: 3rem;
 }
 .graph-modal .modal-consultation .form .just-validate-error-label {
+  position: absolute;
+  bottom: -1.8vw;
+  left: 0;
   margin-left: 2vw;
 }
 .graph-modal .modal-calculator {
@@ -533,6 +536,7 @@ button svg {
   row-gap: 3vw;
 }
 .graph-modal .modal-calculator .calculator .input-box {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -584,6 +588,87 @@ button svg {
   font-size: clamp(1rem, 0.7rem + 1.2vw, 2.4rem);
   color: #494949;
 }
+.graph-modal .modal-calculator .calculator .choices {
+  z-index: 2;
+}
+.graph-modal .modal-calculator .calculator .choices.is-focused.is-open .choices__inner {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.graph-modal .modal-calculator .calculator .choices__inner {
+  width: 100%;
+  padding: 1.4vw 3.5vw 1.8vw 2vw;
+  font-weight: 500;
+  font-size: clamp(1.4rem, 1rem + 1.2vw, 2.4rem);
+  color: var(--light-color);
+  background-color: transparent;
+  border: 1.5px solid #FFFFFF;
+  border-radius: 3rem;
+  -webkit-transition: 0.1s;
+  -o-transition: 0.1s;
+  transition: 0.1s;
+}
+.graph-modal .modal-calculator .calculator .choices__list--dropdown {
+  background: #FFFFFF;
+  border-radius: 0px 0px 30px 30px;
+}
+.graph-modal .modal-calculator .calculator .choices__list--dropdown .choices__item {
+  font-weight: 400;
+  font-size: clamp(1.4rem, 1rem + 1.2vw, 2.4rem);
+  letter-spacing: 0.08em;
+  color: #252424;
+  padding: 0.5rem 1.5rem;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+@media (min-width: 1024px) {
+  .graph-modal .modal-calculator .calculator .choices__list--dropdown .choices__item {
+    padding: 1.5rem 3.5rem;
+  }
+}
+.graph-modal .modal-calculator .calculator .choices__list--dropdown .choices__item:hover {
+  background-color: var(--accent-color);
+}
+.graph-modal .modal-calculator .calculator .choices__list--dropdown .choices__item.is-selected {
+  color: var(--accent-color);
+}
+.graph-modal .modal-calculator .calculator .choices__list--dropdown .choices__item.is-selected:hover {
+  color: #252424;
+}
+.graph-modal .modal-calculator .calculator .choices[data-type*=select-one]:after {
+  content: "";
+  margin-top: -7.5px;
+  margin-right: 1.5vw;
+  width: 10px;
+  height: 6px;
+  background-image: url("../img/arr-down.svg");
+  background-position: center;
+  background-size: cover;
+  border: none;
+  border-color: transparent;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  transition: -webkit-transform 0.3s ease-in-out;
+  -o-transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+}
+@media (min-width: 1024px) {
+  .graph-modal .modal-calculator .calculator .choices[data-type*=select-one]:after {
+    margin-right: 3vw;
+    width: 20px;
+    height: 12px;
+  }
+}
+.graph-modal .modal-calculator .calculator .choices[data-type*=select-one].is-open:after {
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+}
+.graph-modal .modal-calculator .calculator .choices__list--dropdown .choices__item--selectable:after {
+  content: "";
+  display: none;
+}
 .graph-modal .modal-calculator .calculator .buttons-box {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -601,7 +686,9 @@ button svg {
   min-width: 19ch;
 }
 .graph-modal .modal-calculator .calculator .err-message {
-  margin-top: -1vw;
+  position: absolute;
+  bottom: -1.8vw;
+  left: 0;
   margin-left: 2vw;
   color: red;
 }
